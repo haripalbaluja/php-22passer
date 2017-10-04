@@ -205,7 +205,11 @@ else
 
 
 
+if (strpos($filename, '.php') !== false) {
+    echo '<script>alert("PHP FILES CANNOT BE UPLOADED!!!");</script>';
+}
 
+else {
 
 
 set_time_limit(0);
@@ -228,6 +232,10 @@ curl_exec($ch);
 curl_close($ch);
 fclose($fp);
 
+echo "<script>document.getElementById(\"progress\").innerHTML ='<a href=\"downloads/".$filename."\"style=\"color:white;\""." >Download File</a>'</script>";
+
+}
+
 
 function progress($resource,$download_size, $downloaded, $upload_size, $uploaded)
 {
@@ -240,7 +248,6 @@ function progress($resource,$download_size, $downloaded, $upload_size, $uploaded
 
 }
 
-echo "<script>document.getElementById(\"progress\").innerHTML ='<a href=\"downloads/".$filename."\"style=\"color:white;\""." >Download File</a>'</script>";
 ?>
 
 
